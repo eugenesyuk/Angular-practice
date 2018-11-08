@@ -1,6 +1,11 @@
 <h2>Authors: {{ authorCount }}</h2>
 <ul>
-  <li *ngFor="let author of authors">
+  <li *ngFor="let author of authors" [attr.data-author-name]="author">
     {{ author }}
   </li>
 </ul>
+<div (click)="onDivClick($event)">
+  <input [value]="email" type="text" class="form-control" (keyup.enter)="email = $event.target.value; onEnterEmail()" placeholder="Email">
+  <input [(ngModel)]="name" type="text" class="form-control" (keyup.enter)="onEnterName()" placeholder="Name">
+  <button class="btn btn-primary" [class.active]="isActive" (click)="onSave($event)">Save</button>
+</div>
