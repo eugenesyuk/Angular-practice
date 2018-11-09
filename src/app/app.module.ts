@@ -8,12 +8,14 @@ import { CoursesComponent } from './courses/courses.component';
 import { CoursesServise } from './services/courses.service';
 import { AuthorComponent } from './author/author.component';
 import { AuthorService } from './services/author.service';
+import { SummaryPipe } from './summary.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoursesComponent,
     AuthorComponent,
+    SummaryPipe,
   ],
   imports: [
     BrowserModule,
