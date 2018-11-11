@@ -30,4 +30,10 @@ import { PanelComponent } from './components/panel/panel.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+  private _authors : number;
+
+  get authors() {
+    return this._authors;
+  }
+}

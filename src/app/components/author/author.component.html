@@ -1,12 +1,17 @@
-<h2 class="mx-2 my-2">Authors: {{ authorCount }}</h2>
+<div *ngIf="authors.length; then authorsList else noAuthors"></div>
 
-<ul class="mx-2 my-2">
-  <li 
-    *ngFor="let author of authors" 
-    [attr.data-author-name]="author">
-    {{ author }}
-  </li>
-</ul>
+<ng-template #authorsList>  
+  <h2 class="mx-2 my-2">Authors: {{ authorCount }}</h2>
+  <ul class="mx-2 my-2">
+    <li 
+      *ngFor="let author of authors" 
+      [attr.data-author-name]="author">
+      {{ author }}
+    </li>
+  </ul>
+</ng-template>
+
+<ng-template #noAuthors><h3>No authors</h3></ng-template>
 
 <input  type="text" class="form-control mx-2 my-2" placeholder="Email"
   [value]="email"
@@ -25,9 +30,11 @@
 <button class="btn btn-secondary mx-2 my-2" 
   (click)="toggleFavorite()">
         
-  <i class="fa-star" 
-    [class.fas]="isSelected" 
-    [class.far]="!isSelected"></i>
+  <i class="fa-star"
+    [ngClass]= "{
+      'fas': isSelected,
+      'far': !isSelected
+    }"></i>
 
   {{ (isSelected) ? 'Remove from favorites' : 'Add to favorites' }}
 </button>

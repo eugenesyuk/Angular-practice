@@ -1,6 +1,6 @@
 import { LikeClickedEventArgs } from './components/like/like.component';
 import { Component } from '@angular/core';
-import { FavoriteChangedEventArgs } from './components/author/author.component';
+import { FavoriteChangedEventArgs, AuthorComponent } from './components/author/author.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

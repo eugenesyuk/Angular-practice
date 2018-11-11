@@ -1,1 +1,8 @@
-<button class="btn btn-default" (click)="onLikeClick()"><i class="fas fa-heart" [class.selected]="isSelected"></i> {{ likeCount }}</button>
+<button class="btn btn-default" 
+    (click)="onLikeClick()">
+    
+    <i class="fas fa-heart" 
+        [ngClass]="{ 'selected': isSelected }"></i> 
+
+    {{ likeCount }}
+</button>

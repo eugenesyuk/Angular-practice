@@ -8,11 +8,11 @@ import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
   styleUrls: ['./author.component.scss']
 })
 export class AuthorComponent implements OnInit {
-  @Input('isFavorite') isSelected: boolean;
-  @Output('change') click = new EventEmitter();
-
-  private _authorCount: number;
+  @Input('isFavorite') private isSelected: boolean;
+  @Output('change') private click = new EventEmitter();
+  
   private _authors;
+  private _authorCount: number;
   private _email: string = '';
   private _name: string;
   private _title: string;
