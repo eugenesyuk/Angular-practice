@@ -5,15 +5,20 @@
   </h1>
   <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
 </div>
+
 <app-author [isFavorite]='post.isFavorite' (change)="onFavoriteChanged($event)"></app-author>
+
 <app-like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked" (change)="onLikeClicked($event)"></app-like>
-<bootstrap-panel>
-  <div class="item-1">
-    <h5>Item 1</h5>
-  </div>
-  <div class="item-2">
-    <h5>Item 2</h5>
-  </div>
-  <ng-container class="item-3">Item 3
-  </ng-container>
-</bootstrap-panel>
+
+<div>
+  <input class="form-control" type="text" [appInputFormat]="'uppercase'" placeholder="Phone">
+</div>
+
+<div class="my-3">
+  <zippy title="Shipping Details">
+      Shipping Details Content
+  </zippy>
+  <zippy title="Billing Details">
+      Billing Details Content
+  </zippy>
+</div>

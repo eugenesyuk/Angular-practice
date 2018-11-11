@@ -1,4 +1,4 @@
-<div *ngIf="authors.length; then authorsList else noAuthors"></div>
+<div *ngIf="authors?.length; then authorsList else noAuthors"></div>
 
 <ng-template #authorsList>  
   <h2 class="mx-2 my-2">Authors: {{ authorCount }}</h2>

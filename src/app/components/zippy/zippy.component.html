@@ -1,0 +1,14 @@
+<div class="zippy">
+  <div class="zippy-heading" 
+    (click)="toggleClick()"
+    [ngClass]="{ 'expanded': !isCollapsed }">{{ title }}
+    <i class="fas"
+      [ngClass]="{
+        'fa-angle-down': isCollapsed,
+        'fa-angle-up': !isCollapsed  
+      }"></i>
+  </div>
+  <div class="zippy-body" [hidden]="isCollapsed">
+    <ng-content></ng-content>
+  </div>
+</div>

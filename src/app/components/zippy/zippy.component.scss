@@ -1,0 +1,23 @@
+.zippy {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: -1px;
+
+    .zippy-heading {
+        cursor: pointer;
+        padding: 10px 20px;
+
+        &.expanded {
+            background: #ccc;
+        }
+
+        i {
+            float: right;
+            margin-top: 5px;
+        }
+    }
+
+    .zippy-body {
+        padding: 10px 20px;
+    }
+}

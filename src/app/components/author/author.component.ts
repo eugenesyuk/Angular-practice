@@ -20,7 +20,7 @@ export class AuthorComponent implements OnInit {
 
   constructor(service: AuthorService) {
     this._authors = service.getAuthors();
-    this._authorCount = this._authors.length
+    if(this._authors) this._authorCount = this._authors.length;
   }
 
   ngOnInit() {

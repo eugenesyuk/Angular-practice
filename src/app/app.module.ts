@@ -9,7 +9,8 @@ import { AuthorService } from './services/author.service';
 import { SummaryPipe } from './pipes/summary.pipe';
 import { TitleCasePipe } from './pipes/title-case.pipe';
 import { LikeComponent } from './components/like/like.component';
-import { PanelComponent } from './components/panel/panel.component';
+import { InputFormatDirective } from './directives/input-format.directive';
+import { ZippyComponent } from './components/zippy/zippy.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PanelComponent } from './components/panel/panel.component';
     SummaryPipe,
     TitleCasePipe,
     LikeComponent,
-    PanelComponent,
+    InputFormatDirective,
+    ZippyComponent,
   ],
   imports: [
     BrowserModule,
