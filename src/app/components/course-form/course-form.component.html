@@ -29,7 +29,7 @@
       #category="ngModel">
 
       <option value="">Choose...</option>
-      <option *ngFor="let category of categories" [ngValue]="category">{{ category.name }}</option>
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
     </select>
 
     <div class="alert alert-danger" *ngIf="category.touched && !category.valid">
