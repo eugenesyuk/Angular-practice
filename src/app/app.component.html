@@ -8,13 +8,18 @@
 
 <app-author [isFavorite]='post.isFavorite' (change)="onFavoriteChanged($event)"></app-author>
 
-<app-like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked" (change)="onLikeClicked($event)"></app-like>
+<div class="my-5">
+  <h2>Like button</h2><hr>
+  <app-like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked" (change)="onLikeClicked($event)"></app-like>
+</div>
 
-<div>
+<div class="my-5">
+  <h2>Custom appInputFormat directive</h2><hr>
   <input class="form-control" type="text" [appInputFormat]="'uppercase'" placeholder="Phone">
 </div>
 
 <div class="my-3">
+  <h2>Zippy component</h2><hr>
   <zippy title="Shipping Details">
       Shipping Details Content
   </zippy>

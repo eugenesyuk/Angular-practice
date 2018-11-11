@@ -1,49 +1,68 @@
-<div *ngIf="authors?.length; then authorsList else noAuthors"></div>
 
-<ng-template #authorsList>  
-  <h2 class="mx-2 my-2">Authors: {{ authorCount }}</h2>
-  <ul class="mx-2 my-2">
-    <li 
-      *ngFor="let author of authors" 
-      [attr.data-author-name]="author">
-      {{ author }}
-    </li>
-  </ul>
-</ng-template>
 
-<ng-template #noAuthors><h3>No authors</h3></ng-template>
+<div class="my-5">
+  <h2>Autors list</h2><hr>
 
-<input  type="text" class="form-control mx-2 my-2" placeholder="Email"
-  [value]="email"
-  (keyup.enter)="email = $event.target.value; onEnterEmail()">
+  <div *ngIf="authors?.length; then authorsList else noAuthors"></div>
+  <ng-template #authorsList>  
+    <h4 class="mx-2 my-2">Authors: {{ authorCount }}</h4>
+    <ul class="mx-2 my-2">
+      <li 
+        *ngFor="let author of authors" 
+        [attr.data-author-name]="author">
+        {{ author }}
+      </li>
+    </ul>
+  </ng-template>
 
-<input type="text" class="form-control mx-2 my-2" placeholder="Name"
-  [(ngModel)]="name" 
-  (keyup.enter)="onEnterName()">
+  <ng-template #noAuthors><h3>No authors</h3></ng-template>
+</div>
 
-<button class="btn btn-primary mx-2 my-2" 
-  [class.active]="isActive" 
-  (click)="onSave($event)">
-  Save
-</button>
+<div class="my-5">
+  <h2>Input bindings</h2><hr>
 
-<button class="btn btn-secondary mx-2 my-2" 
-  (click)="toggleFavorite()">
-        
-  <i class="fa-star"
-    [ngClass]= "{
-      'fas': isSelected,
-      'far': !isSelected
-    }"></i>
+  <input  type="text" class="form-control mx-2 my-2" placeholder="Email"
+    [value]="email"
+    (keyup.enter)="email = $event.target.value; onEnterEmail()">
 
-  {{ (isSelected) ? 'Remove from favorites' : 'Add to favorites' }}
-</button>
+  <input type="text" class="form-control mx-2 my-2" placeholder="Name"
+    [(ngModel)]="name" 
+    (keyup.enter)="onEnterName()">
 
-<p class="mx-2 my-2">
-  {{ text | summary:25 }}
-</p>
+  <button class="btn btn-primary mx-2 my-2" 
+    [class.active]="isActive" 
+    (click)="onSave($event)">
+    Save
+  </button>
+</div>
 
-<div class="mx-2 my-3">
+<div class="my-5">
+  <h2>Favorites button</h2><hr>
+
+  <button class="btn btn-secondary mx-2 my-2" 
+    (click)="toggleFavorite()">
+          
+    <i class="fa-star"
+      [ngClass]= "{
+        'fas': isSelected,
+        'far': !isSelected
+      }"></i>
+
+    {{ (isSelected) ? 'Remove from favorites' : 'Add to favorites' }}
+  </button>
+</div>
+
+<div class="my-5">
+  <h2>Summary custom pipe</h2><hr>
+
+  <p class="mx-2 my-2">
+    {{ text | summary:25 }}
+  </p>
+</div>
+
+<div class="my-5">
+  <h2>Title case pipe</h2><hr>
+
   <input type="text" placeholder="Title case" [(ngModel)]="title" class="form-control mb-2">
   <p>Result: {{ title | titleCase }}</p>
 </div>
