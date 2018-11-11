@@ -4,11 +4,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthorComponent } from './author/author.component';
+import { AuthorComponent } from './components/author/author.component';
 import { AuthorService } from './services/author.service';
 import { SummaryPipe } from './pipes/summary.pipe';
 import { TitleCasePipe } from './pipes/title-case.pipe';
-import { LikeComponent } from './like/like.component';
+import { LikeComponent } from './components/like/like.component';
+import { PanelComponent } from './components/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { LikeComponent } from './like/like.component';
     SummaryPipe,
     TitleCasePipe,
     LikeComponent,
+    PanelComponent,
   ],
   imports: [
     BrowserModule,

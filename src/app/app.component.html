@@ -7,4 +7,13 @@
 </div>
 <app-author [isFavorite]='post.isFavorite' (change)="onFavoriteChanged($event)"></app-author>
 <app-like [likesCount]="tweet.likesCount" [isActive]="tweet.isLiked" (change)="onLikeClicked($event)"></app-like>
-<router-outlet></router-outlet>
+<bootstrap-panel>
+  <div class="item-1">
+    <h5>Item 1</h5>
+  </div>
+  <div class="item-2">
+    <h5>Item 2</h5>
+  </div>
+  <ng-container class="item-3">Item 3
+  </ng-container>
+</bootstrap-panel>
