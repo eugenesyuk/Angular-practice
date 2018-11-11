@@ -1,5 +1,6 @@
+import { LikeClickedEventArgs } from './like/like.component';
 import { Component } from '@angular/core';
-import { FavoriteChangedEventArgs } from './author/author.component'
+import { FavoriteChangedEventArgs } from './author/author.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +13,17 @@ export class AppComponent {
     isFavorite: false
   }
 
+  tweet = {
+    body: 'Some text here...',
+    likesCount: 0,
+    isLiked: false
+  }
+
   onFavoriteChanged(args: FavoriteChangedEventArgs) {
-    console.log(`Favorite changed: ${args}`);
+    console.log(`Favorite changed: ${args.newValue}`);
+  }
+
+  onLikeClicked(eventArgs: LikeClickedEventArgs) {
+    console.log('Like changed: '+ eventArgs.newValue);
   }
 }

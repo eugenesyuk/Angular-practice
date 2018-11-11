@@ -10,6 +10,7 @@ import { AuthorComponent } from './author/author.component';
 import { AuthorService } from './services/author.service';
 import { SummaryPipe } from './summary.pipe';
 import { TitleCasePipe } from './title-case.pipe';
+import { LikeComponent } from './like/like.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TitleCasePipe } from './title-case.pipe';
     AuthorComponent,
     SummaryPipe,
     TitleCasePipe,
+    LikeComponent,
   ],
   imports: [
     BrowserModule,
