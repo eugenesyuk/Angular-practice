@@ -1,4 +1,4 @@
-import { UsernameValidators } from './../validators/username.validators';
+import { UsernameValidators } from './../../validators/username.validators';
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
