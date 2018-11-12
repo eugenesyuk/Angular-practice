@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,7 @@ import { InputFormatDirective } from './directives/input-format.directive';
 import { ZippyComponent } from './components/zippy/zippy.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CourseFormComponent } from './components/course-form/course-form.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +26,10 @@ import { CourseFormComponent } from './components/course-form/course-form.compon
     ZippyComponent,
     ContactFormComponent,
     CourseFormComponent,
+    SignupFormComponent
   ],
   imports: [
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule
