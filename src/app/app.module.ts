@@ -1,6 +1,8 @@
+import { AppErrorHandler } from './errors/app-error-handler';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +17,8 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { CourseFormComponent } from './components/course-form/course-form.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { PasswordChangeFormComponent } from './components/password-change-form/password-change-form.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { PostService } from './services/post.service';
 
 @NgModule({
   declarations: [
@@ -28,16 +32,20 @@ import { PasswordChangeFormComponent } from './components/password-change-form/p
     ContactFormComponent,
     CourseFormComponent,
     SignupFormComponent,
-    PasswordChangeFormComponent
+    PasswordChangeFormComponent,
+    PostsComponent
   ],
   imports: [
+    HttpModule,
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
   providers: [
-    AuthorService
+    AuthorService,
+    PostService,
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
