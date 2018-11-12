@@ -10,7 +10,6 @@ export class UsernameValidators {
     }
 
     static isUnique(control: AbstractControl): Promise<ValidationErrors | null> {
-
         return new Promise( (resolve, reason) => {
             setTimeout( () => {
                 if(control.value === 'eugene') {

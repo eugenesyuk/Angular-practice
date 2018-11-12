@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { map, catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs/';
+import { ForbiddenError } from '../errors/forbidden-error';
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,8 @@ export class DataService {
   private handleErors(error: Response) {
     if(error.status == 404)
           return throwError(new NotFoundError());
+    if(error.status == 403)
+          return throwError(new ForbiddenError);
     if(error.status == 400)
           return throwError(new BadRequestError(error));
     return throwError(new AppError(error));

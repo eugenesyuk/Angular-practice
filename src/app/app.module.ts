@@ -19,6 +19,8 @@ import { SignupFormComponent } from './components/signup-form/signup-form.compon
 import { PasswordChangeFormComponent } from './components/password-change-form/password-change-form.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostService } from './services/post.service';
+import { FollowersComponent } from './components/followers/followers.component';
+import { FollowersService } from './services/followers.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { PostService } from './services/post.service';
     CourseFormComponent,
     SignupFormComponent,
     PasswordChangeFormComponent,
-    PostsComponent
+    PostsComponent,
+    FollowersComponent
   ],
   imports: [
     HttpModule,
@@ -45,6 +48,7 @@ import { PostService } from './services/post.service';
   providers: [
     AuthorService,
     PostService,
+    FollowersService,
     { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
