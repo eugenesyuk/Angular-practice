@@ -3,7 +3,9 @@
       <div class="avatar">
         <img src="{{ follower.avatar_url }}"/>
       </div>
-      <h4>{{ follower.login }}</h4>
+      <h4>
+        <a [routerLink]="['/followers', follower.id]">{{ follower.login }}</a>
+      </h4>
       <a href="{{ follower.html_url }}">{{ follower.html_url }}</a>
   </li>
 </ul>

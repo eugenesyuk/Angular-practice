@@ -21,6 +21,11 @@ import { PostsComponent } from './components/posts/posts.component';
 import { PostService } from './services/post.service';
 import { FollowersComponent } from './components/followers/followers.component';
 import { FollowersService } from './services/followers.service';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { RouterModule } from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { FollowersProfileComponent } from './components/followers-profile/followers-profile.component';
 
 @NgModule({
   declarations: [
@@ -36,14 +41,18 @@ import { FollowersService } from './services/followers.service';
     SignupFormComponent,
     PasswordChangeFormComponent,
     PostsComponent,
-    FollowersComponent
+    FollowersComponent,
+    NavbarComponent,
+    NotFoundComponent,
+    HomeComponent,
+    FollowersProfileComponent
   ],
   imports: [
     HttpModule,
     ReactiveFormsModule,
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     AuthorService,
