@@ -15,12 +15,12 @@ const routes: Routes = [
     component: HomeComponent
   },
   { 
-    path: 'followers', 
+    path: 'followers/:userId', 
     component: FollowersComponent 
   },
   { 
-    path: 'followers/:userId/:username', 
-    component: FollowersProfileComponent
+    path: 'followers', 
+    component: FollowersComponent 
   },
   { 
     path: 'posts',

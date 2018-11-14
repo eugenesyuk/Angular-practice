@@ -4,8 +4,9 @@ import { Component, OnInit } from '@angular/core';
 import { FollowersService } from 'src/app/services/followers.service';
 import { NotFoundError } from 'src/app/errors/not-forund-error';
 import { ForbiddenError } from 'src/app/errors/forbidden-error';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-followers',
@@ -14,30 +15,31 @@ import { combineLatest } from 'rxjs';
 })
 export class FollowersComponent implements OnInit {
   private _pageStep: number = 10;
-  private _currentPage: number;
+  private _currentPage: number = 1;
   private _followers: Array<any>;
   private _pageFollowers: Array<any>;
   private _pages: number = 1;
 
-  constructor(private route: ActivatedRoute, private service: FollowersService) { }
+  constructor(private route: ActivatedRoute, private service: FollowersService, private router: Router) { }
 
   ngOnInit() {
-    
 
-    this.service.getAll()
-    
-    .subscribe(
-      res => {
-        this._followers = res;
-        this._pages = Math.ceil(this._followers.length / 10);
+    this.service.getAll().pipe(
+      switchMap(
+        res => {
+          this._followers = res;
+          this._pages = Math.ceil(this._followers.length / 10);
+  
+          return this.route.queryParams;
+        }
+      ))
+      .subscribe( res => {
+        res.page < 1 ? this._currentPage = 1 : null;
+        res.page > this._pages ? this._currentPage = this._pages : null;
 
-        this.route.queryParams
-        .subscribe( res => {
-          this._currentPage = res.page;
-          this._pageFollowers = this.getPageFollowers();
-        });
-      }
-    );
+        //this._currentPage = res.page;
+        this._pageFollowers = this.getPageFollowers();
+      });
 
     /* 
       // The same combined in one Obsevable
@@ -75,6 +77,18 @@ export class FollowersComponent implements OnInit {
   
   private getPageFollowers() {
     return this._followers.slice( (this._currentPage - 1) * this._pageStep, (this._currentPage * this._pageStep) - 1);
+  }
+
+  private navigatePrev() {
+    this.router.navigate(['/followers'], {
+      queryParams: { page: --this._currentPage }
+    });
+  }
+
+  private navigateNext() {
+    this.router.navigate(['/followers'], {
+      queryParams: { page: ++this._currentPage }
+    });
   }
 
   private handleErrors(error: any) {
