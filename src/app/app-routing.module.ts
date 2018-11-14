@@ -7,6 +7,7 @@ import { FollowersComponent } from './components/followers/followers.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { FollowersProfileComponent } from './components/followers-profile/followers-profile.component';
+import { AuthorComponent } from './components/author/author.component';
 
 const routes: Routes = [
   { 
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SignupFormComponent
+  },
+  {
+    path: 'other',
+    component: AuthorComponent
   },
   { 
     path: '**',
