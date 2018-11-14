@@ -17,8 +17,9 @@ export class FollowersProfileComponent implements OnInit {
       this._userId = +params.get('userId');
       console.log(this._userId);
     });
-  }
 
+    // Or this.route.snapshot.paramMap.get('userId'); if navigation os away of current component
+  }
 
   get userId() {
     return this._userId;

@@ -18,7 +18,7 @@ const routes: Routes = [
     component: FollowersComponent 
   },
   { 
-    path: 'followers/:userId', 
+    path: 'followers/:userId/:username', 
     component: FollowersProfileComponent
   },
   { 

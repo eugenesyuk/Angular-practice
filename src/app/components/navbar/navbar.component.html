@@ -4,8 +4,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active">Home</a>
-      <a class="nav-item nav-link" routerLink="followers" routerLinkActive="active">Followers</a>
+      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" #home="routerLinkActive">
+        {{ home.isActive ? '=> ' : null }}Home
+      </a>
+      <a class="nav-item nav-link" routerLink="followers" routerLinkActive="active" [queryParams]="{ page: 1 }">Followers</a>
       <a class="nav-item nav-link" routerLink="posts" routerLinkActive="active">Posts</a>
       <a class="nav-item nav-link" routerLink="signup" routerLinkActive="active">Sign Up</a>
     </div>

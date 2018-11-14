@@ -4,7 +4,7 @@ import { AppError } from '../errors/app-error';
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { map, catchError } from 'rxjs/operators';
-import { throwError, Observable } from 'rxjs/';
+import { throwError } from 'rxjs/';
 import { ForbiddenError } from '../errors/forbidden-error';
 
 @Injectable({
