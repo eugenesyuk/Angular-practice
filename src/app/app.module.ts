@@ -2,7 +2,7 @@ import { AppErrorHandler } from './errors/app-error-handler';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, ErrorHandler } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpModule, BaseRequestOptions } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,10 +22,11 @@ import { PostService } from './services/post.service';
 import { FollowersComponent } from './components/followers/followers.component';
 import { FollowersService } from './services/followers.service';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { RouterModule } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { FollowersProfileComponent } from './components/followers-profile/followers-profile.component';
+import { fakeBackendProvider } from './helpers/fake-backend';
+import { MockBackend } from '@angular/http/testing';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,11 @@ import { FollowersProfileComponent } from './components/followers-profile/follow
     AuthorService,
     PostService,
     FollowersService,
-    { provide: ErrorHandler, useClass: AppErrorHandler }
+    { provide: ErrorHandler, useClass: AppErrorHandler },
+
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions
   ],
   bootstrap: [AppComponent]
 })
