@@ -10,7 +10,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class PasswordChangeFormComponent {
   private _form;
 
-  constructor(fb: FormBuilder) { 
+  constructor(fb: FormBuilder) {
     this._form = fb.group({
       oldPassword: ['', Validators.required, PasswordValidators.passwordIsValid],
       password: fb.group({
@@ -35,7 +35,7 @@ export class PasswordChangeFormComponent {
   get newPassword() {
     return this._form.get('password.newPassword');
   }
-  
+
   get newPasswordConfirmation() {
     return this._form.get('password.newPasswordConfirmation');
   }

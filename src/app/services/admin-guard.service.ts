@@ -8,14 +8,14 @@ import { User } from '../helpers/user';
 })
 export class AdminGuard implements CanActivate {
   private _user: User;
-  constructor(private router: Router, private authService: AuthorizationService) { 
+  constructor(private router: Router, private authService: AuthorizationService) {
     this._user = authService.user;
   }
 
   canActivate() {
-    if(this._user && this._user.admin) return true;
-    
+    if (this._user && this._user.admin) { return true; }
+
     this.router.navigate(['access-denied'], {queryParams: {rights: 'admin'}});
-    return false
+    return false;
   }
 }

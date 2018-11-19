@@ -21,7 +21,7 @@ export class LoginComponent {
       Validators.minLength(5),
       UsernameValidators.containSpace,
     ]),
-    password: new FormControl('', 
+    password: new FormControl('',
     [
       Validators.required,
       Validators.minLength(6)
@@ -31,7 +31,7 @@ export class LoginComponent {
   get loginForm() {
     return this._loginForm;
   }
-  
+
   get username() {
     return this._loginForm.get('username');
   }
@@ -43,11 +43,11 @@ export class LoginComponent {
   login() {
     this.authService.login(this._loginForm.value)
       .subscribe( res => {
-        if(res) {
+        if (res) {
           const returnUrl = this.activeRoute.snapshot.queryParamMap.get('returnUrl');
-          this.router.navigate([returnUrl || '/'])
+          this.router.navigate([returnUrl || '/']);
         } else {
-          this.invalidLogin = true
+          this.invalidLogin = true;
         }
       });
   }

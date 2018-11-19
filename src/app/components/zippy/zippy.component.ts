@@ -7,10 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ZippyComponent {
   constructor() { }
-  
+
   @Input('title') title; string;
 
-  private _isCollapsed: boolean = true;
+  private _isCollapsed = true;
 
   get isCollapsed() {
     return this._isCollapsed;

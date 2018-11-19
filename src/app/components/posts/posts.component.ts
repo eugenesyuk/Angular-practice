@@ -10,10 +10,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss']
 })
-export class PostsComponent implements OnInit{
+export class PostsComponent implements OnInit {
   private _posts: any;
-  
-  constructor(private service: PostService) { 
+
+  constructor(private service: PostService) {
   }
 
   ngOnInit() {
@@ -28,12 +28,12 @@ export class PostsComponent implements OnInit{
   public createPost(input: HTMLInputElement) {
     const post = { title: input.value };
     this._posts.splice(0, 0, post);
-  
+
     this.service.createItem(post)
-    .subscribe( 
+    .subscribe(
       resp => {
         post['id'] = resp.id;
-      }, 
+      },
       (error: AppError) => {
         this.handleErrors(error, () => this._posts.splice(0, 1));
       },
@@ -43,19 +43,19 @@ export class PostsComponent implements OnInit{
 
   private updatePost(post) {
     this.service.updateItem(post.id)
-    .subscribe( 
-      resp => { console.log(resp) },
+    .subscribe(
+      resp => { console.log(resp); },
       this.handleErrors,
       () => console.log('Post updated successfully')
     );
   }
 
   private deletePost(post) {
-    const index = this._posts.indexOf(post); 
+    const index = this._posts.indexOf(post);
     this._posts.splice(index, 1);
 
     this.service.deleteItem(post.id)
-    .subscribe( 
+    .subscribe(
       null,
       (error: AppError) => {
         this.handleErrors(error, () => this._posts.splice(index, 0, post));
@@ -64,18 +64,13 @@ export class PostsComponent implements OnInit{
     );
   }
 
-  private handleErrors(error: AppError, callback?: Function)
-  {
+  private handleErrors(error: AppError, callback?: Function) {
     callback();
 
     if (error instanceof BadRequestError) {
-      alert('Bad request')
-    }
-  
-    else if (error instanceof NotFoundError) {
-      alert('This post already been deleted.') 
-    }
-  
-    else throw error;
+      alert('Bad request');
+    } else if (error instanceof NotFoundError) {
+      alert('This post already been deleted.');
+    } else { throw error; }
   }
 }

@@ -69,8 +69,8 @@ import { AdminGuard } from './services/admin-guard.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
-  private _authors : number;
+export class AppModule {
+  private _authors: number;
 
   get authors() {
     return this._authors;

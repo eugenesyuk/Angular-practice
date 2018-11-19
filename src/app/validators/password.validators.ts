@@ -10,11 +10,11 @@ export class PasswordValidators {
 
     static passwordIsValid(control: AbstractControl): Promise<ValidationErrors | null> {
         console.log(control);
-        
-        return new Promise((resolve,reason) => {
+
+        return new Promise((resolve, reason) => {
             setTimeout(() => {
                 control.value !== 'GeNa1993na' ? resolve({ passwordIncorrect: true }) : resolve( null );
             }, 200);
-        })
+        });
     }
 }

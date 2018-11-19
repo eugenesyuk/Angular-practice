@@ -7,7 +7,7 @@ import { Http } from '@angular/http';
 })
 
 export class PostService extends DataService {
-  constructor(http: Http) { 
+  constructor(http: Http) {
     super('https://jsonplaceholder.typicode.com/posts', http);
   }
 }

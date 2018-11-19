@@ -14,11 +14,11 @@ import { switchMap } from 'rxjs/operators';
   styleUrls: ['./followers.component.scss']
 })
 export class FollowersComponent implements OnInit {
-  private _pageStep: number = 10;
-  private _currentPage: number = 1;
+  private _pageStep = 10;
+  private _currentPage = 1;
   private _followers: Array<any>;
   private _pageFollowers: Array<any>;
-  private _pages: number = 1;
+  private _pages = 1;
 
   constructor(private route: ActivatedRoute, private service: FollowersService, private router: Router) { }
 
@@ -29,7 +29,7 @@ export class FollowersComponent implements OnInit {
         res => {
           this._followers = res;
           this._pages = Math.ceil(this._followers.length / 10);
-  
+
           return this.route.queryParams;
         }
       ))
@@ -37,17 +37,17 @@ export class FollowersComponent implements OnInit {
         res.page < 1 ? this._currentPage = 1 : null;
         res.page > this._pages ? this._currentPage = this._pages : null;
 
-        //this._currentPage = res.page;
+        // this._currentPage = res.page;
         this._pageFollowers = this.getPageFollowers();
       });
 
-    /* 
+    /*
       // The same combined in one Obsevable
       combineLatest(
         this.service.getAll(),
         this.route.queryParams
       )
-      .subscribe( 
+      .subscribe(
         res => {
           this._followers = res[0];
           this._currentPage = res[1].page;
@@ -55,7 +55,7 @@ export class FollowersComponent implements OnInit {
           this._pageFollowers = this.getPageFollowers();
         },
         this.handleErrors
-      ); 
+      );
     */
   }
 
@@ -74,7 +74,7 @@ export class FollowersComponent implements OnInit {
   get pages() {
     return this._pages;
   }
-  
+
   private getPageFollowers() {
     return this._followers.slice( (this._currentPage - 1) * this._pageStep, (this._currentPage * this._pageStep) - 1);
   }
@@ -92,9 +92,6 @@ export class FollowersComponent implements OnInit {
   }
 
   public handleErrors(error: any) {
-    if (error instanceof BadRequestError) { alert('Bad request 400'); }
-    else if(error instanceof ForbiddenError) { alert('Access forbiden 403'); }
-    else if(error instanceof NotFoundError) { alert('Not found 404 error'); }
-    else throw AppError;
+    if (error instanceof BadRequestError) { alert('Bad request 400'); } else if (error instanceof ForbiddenError) { alert('Access forbiden 403'); } else if (error instanceof NotFoundError) { alert('Not found 404 error'); } else { throw AppError; }
   }
 }

@@ -12,13 +12,13 @@ export class HomeComponent implements OnInit {
   constructor(private authService: AuthorizationService) { }
 
   get title() {
-    return this._title
+    return this._title;
   }
 
   ngOnInit() {
   }
 
   get user() {
-    return this.authService.user
+    return this.authService.user;
   }
 }

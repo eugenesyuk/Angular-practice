@@ -10,7 +10,7 @@ export class OrderService {
   constructor(private http: Http) {
   }
 
-  getOrders() { 
+  getOrders() {
     return this.http.get('/api/orders').pipe(
       map(response => response.json())
     );

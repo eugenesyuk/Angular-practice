@@ -17,7 +17,7 @@ export class ContactFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  log(p) { console.log(p) }
+  log(p) { console.log(p); }
 
   submitForm(form) {
     console.log(form);

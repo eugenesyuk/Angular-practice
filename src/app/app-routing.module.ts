@@ -12,22 +12,22 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AdminGuard } from './services/admin-guard.service';
 
 const routes: Routes = [
-  { 
-    path: '', 
+  {
+    path: '',
     component: HomeComponent,
     canActivate: [AuthGuard]
   },
-  { 
-    path: 'followers/:userId', 
+  {
+    path: 'followers/:userId',
     component: FollowersComponent ,
     canActivate: [AdminGuard]
   },
-  { 
-    path: 'followers', 
+  {
+    path: 'followers',
     component: FollowersComponent,
     canActivate: [AdminGuard]
   },
-  { 
+  {
     path: 'posts',
     component: PostsComponent,
     canActivate: [AdminGuard]
@@ -49,10 +49,10 @@ const routes: Routes = [
     path: 'access-denied',
     component: AccessDeniedComponent
   },
-  { 
+  {
     path: '**',
     component: NotFoundComponent,
-  } 
+  }
 ];
 
 @NgModule({

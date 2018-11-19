@@ -7,7 +7,7 @@ import { throwError } from 'rxjs/';
 import { ForbiddenError } from '../errors/forbidden-error';
 
 export class DataService {
-  
+
   constructor(private _url: string, private http: Http) { }
 
   getAll() {
@@ -27,7 +27,7 @@ export class DataService {
   }
 
   updateItem(id: number) {
-    return this.http.patch(this._url + "/" + id , JSON.stringify({ isRead: true }))
+    return this.http.patch(this._url + '/' + id , JSON.stringify({ isRead: true }))
     .pipe(
       map( response => response.json()),
       catchError(this.handleErors)
@@ -35,7 +35,7 @@ export class DataService {
   }
 
   deleteItem(id: number) {
-    return this.http.delete(this._url + "/" + id)
+    return this.http.delete(this._url + '/' + id)
     .pipe(
       map( response => response.json()),
       catchError(this.handleErors)
@@ -43,12 +43,15 @@ export class DataService {
   }
 
   private handleErors(error: Response) {
-    if(error.status == 404)
+    if (error.status == 404) {
           return throwError(new NotFoundError());
-    if(error.status == 403)
+    }
+    if (error.status == 403) {
           return throwError(new ForbiddenError);
-    if(error.status == 400)
+    }
+    if (error.status == 400) {
           return throwError(new BadRequestError(error));
+    }
     return throwError(new AppError(error));
   }
 }

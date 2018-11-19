@@ -12,7 +12,7 @@ export class AccessDeniedComponent implements OnInit {
   constructor(private activeRoute: ActivatedRoute) { }
 
   get rights() {
-    return this._rights
+    return this._rights;
   }
 
   ngOnInit() {

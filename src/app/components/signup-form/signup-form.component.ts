@@ -16,7 +16,7 @@ export class SignupFormComponent {
         Validators.required,
         Validators.minLength(5),
         UsernameValidators.containSpace,
-      ], 
+      ],
       [
         UsernameValidators.isUnique
       ]),
