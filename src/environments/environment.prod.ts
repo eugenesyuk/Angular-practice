@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:4200',
+  apiUrl: 'https://angular-app-fb87f.firebaseapp.com/',
   endpoints: {
     FAKELOGIN: {
       GET: '/assets/api/empty.json',
