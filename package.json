@@ -1,5 +1,5 @@
 {
-  "name": "hello-world",
+  "name": "angular-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy-firebase": "ng build --prod && firebase deploy"
+    "deploy-firebase": "ng build --prod && firebase deploy",
+    "deploy-ghpages": "ng build --prod --base-href 'https://eugenesyuk.github.io/Angular-practice/' && ngh"
   },
   "private": true,
   "dependencies": {

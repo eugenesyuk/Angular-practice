@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/hello-world",
+    "public": "dist",
     "rewrites": [
       {
         "source": "**",
