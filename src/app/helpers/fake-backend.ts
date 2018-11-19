@@ -4,8 +4,8 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 export function fakeBackendFactory(
     backend: MockBackend, 
     options: BaseRequestOptions) {
-        
-  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1vc2ggSGFtZWRhbmkiLCJhZG1pbiI6dHJ1ZX0.iy8az1ZDe-_hS8GLDKsQKgPHvWpHl0zkQBqy1QIPOkA';
+
+  let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkV1Z2VuZSBTeXJvdGl1ayIsImFkbWluIjp0cnVlfQ.Y5QOFMO29CiY85ILJBpdo6iQ3uc7xvzcnAEgWGQEuN8';
     
   backend.connections.subscribe((connection: MockConnection) => {
     // We are using the setTimeout() function to simulate an 
@@ -18,7 +18,7 @@ export function fakeBackendFactory(
         connection.request.method === RequestMethod.Post) {
         let body = JSON.parse(connection.request.getBody());
 
-        if (body.email === 'eugenesyuk@gmail.com' && body.password === 'GeNa1993na') {
+        if (body.username === 'eugenesyuk@gmail.com' && body.password === 'GeNa1993na') {
           connection.mockRespond(new Response(
             new ResponseOptions({
               status: 200,

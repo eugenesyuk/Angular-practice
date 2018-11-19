@@ -4,13 +4,15 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" #home="routerLinkActive">
+      <a *ngIf="userLoggedIn" class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" #home="routerLinkActive">
         {{ home.isActive ? '=> ' : null }}Home
       </a>
-      <a class="nav-item nav-link" routerLink="followers" routerLinkActive="active">Followers</a>
-      <a class="nav-item nav-link" routerLink="posts" routerLinkActive="active">Posts</a>
-      <a class="nav-item nav-link" routerLink="signup" routerLinkActive="active">Sign Up</a>
-      <a class="nav-item nav-link" routerLink="other" routerLinkActive="active">Other</a>
+      <a *ngIf="userLoggedIn" class="nav-item nav-link" routerLink="followers" routerLinkActive="active">Followers</a>
+      <a *ngIf="userLoggedIn" class="nav-item nav-link" routerLink="posts" routerLinkActive="active">Posts</a>
+      <a *ngIf="!userLoggedIn" class="nav-item nav-link" routerLink="login" routerLinkActive="active">Login</a>
+      <a *ngIf="!userLoggedIn"class="nav-item nav-link" routerLink="signup" routerLinkActive="active">SignUp</a>
+      <a *ngIf="userLoggedIn" class="nav-item nav-link" routerLink="other" routerLinkActive="active">Other</a>
+      <a *ngIf="userLoggedIn" class="nav-item nav-link" href="#" (click)="authService.logout()">Logout</a>
     </div>
   </div>
 </nav>

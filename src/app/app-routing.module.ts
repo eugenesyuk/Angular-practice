@@ -1,30 +1,39 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { FollowersComponent } from './components/followers/followers.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
-import { FollowersProfileComponent } from './components/followers-profile/followers-profile.component';
 import { AuthorComponent } from './components/author/author.component';
+import { LoginComponent } from './components/login/login.component';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
   { 
     path: '', 
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   { 
     path: 'followers/:userId', 
-    component: FollowersComponent 
+    component: FollowersComponent ,
+    canActivate: [AuthGuard]
   },
   { 
     path: 'followers', 
-    component: FollowersComponent 
+    component: FollowersComponent,
+    canActivate: [AuthGuard]
   },
   { 
     path: 'posts',
-    component: PostsComponent
+    component: PostsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'signup',
@@ -32,11 +41,16 @@ const routes: Routes = [
   },
   {
     path: 'other',
-    component: AuthorComponent
+    component: AuthorComponent,
+    canActivate: [AuthGuard]
   },
   { 
     path: '**',
-    component: NotFoundComponent
+    component: NotFoundComponent,
+  }, 
+  {
+    path: 'access-denied',
+    component: AccessDeniedComponent
   }
 ];
 

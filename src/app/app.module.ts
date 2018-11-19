@@ -15,7 +15,6 @@ import { InputFormatDirective } from './directives/input-format.directive';
 import { ZippyComponent } from './components/zippy/zippy.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { CourseFormComponent } from './components/course-form/course-form.component';
-import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { PasswordChangeFormComponent } from './components/password-change-form/password-change-form.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostService } from './services/post.service';
@@ -27,9 +26,14 @@ import { HomeComponent } from './components/home/home.component';
 import { FollowersProfileComponent } from './components/followers-profile/followers-profile.component';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { MockBackend } from '@angular/http/testing';
+import { LoginComponent } from './components/login/login.component';
+import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
+    AccessDeniedComponent,
     AppComponent,
     AuthorComponent,
     SummaryPipe,
@@ -39,14 +43,15 @@ import { MockBackend } from '@angular/http/testing';
     ZippyComponent,
     ContactFormComponent,
     CourseFormComponent,
-    SignupFormComponent,
     PasswordChangeFormComponent,
     PostsComponent,
     FollowersComponent,
     NavbarComponent,
     NotFoundComponent,
     HomeComponent,
-    FollowersProfileComponent
+    FollowersProfileComponent,
+    LoginComponent,
+    SignupFormComponent
   ],
   imports: [
     HttpModule,
@@ -59,6 +64,7 @@ import { MockBackend } from '@angular/http/testing';
     AuthorService,
     PostService,
     FollowersService,
+    AuthGuard,
     { provide: ErrorHandler, useClass: AppErrorHandler },
 
     fakeBackendProvider,
