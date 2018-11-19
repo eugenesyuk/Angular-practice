@@ -9,6 +9,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { AdminGuard } from './services/admin-guard.service';
 
 const routes: Routes = [
   { 
@@ -19,17 +20,17 @@ const routes: Routes = [
   { 
     path: 'followers/:userId', 
     component: FollowersComponent ,
-    canActivate: [AuthGuard]
+    canActivate: [AdminGuard]
   },
   { 
     path: 'followers', 
     component: FollowersComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AdminGuard]
   },
   { 
     path: 'posts',
     component: PostsComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AdminGuard]
   },
   {
     path: 'login',
@@ -44,14 +45,14 @@ const routes: Routes = [
     component: AuthorComponent,
     canActivate: [AuthGuard]
   },
-  { 
-    path: '**',
-    component: NotFoundComponent,
-  }, 
   {
     path: 'access-denied',
     component: AccessDeniedComponent
-  }
+  },
+  { 
+    path: '**',
+    component: NotFoundComponent,
+  } 
 ];
 
 @NgModule({

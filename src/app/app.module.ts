@@ -28,6 +28,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { AdminGuard } from './services/admin-guard.service';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AuthGuard } from './services/auth-guard.service';
     PostService,
     FollowersService,
     AuthGuard,
+    AdminGuard,
     { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]

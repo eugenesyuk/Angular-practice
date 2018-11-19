@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Endpoint, FakeLoginEndpoint } from '../helpers/environment';
 import { environment } from '../../environments/environment';
+import { User } from '../helpers/user';
 
 @Injectable({
   providedIn: 'root'
@@ -49,7 +50,7 @@ export class AuthorizationService implements OnInit{
     const token = localStorage.getItem('token');
     if (!token) return null;
 
-    return new JwtHelperService().decodeToken(token)
+    return new JwtHelperService().decodeToken(token) as User
   }
 
   private _makeFakeLoginRequest(credentials) {
