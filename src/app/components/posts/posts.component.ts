@@ -3,7 +3,7 @@ import { NotFoundError } from '../../errors/not-forund-error';
 import { AppError } from '../../errors/app-error';
 import { PostService } from './../../services/post.service';
 import { Component, OnInit } from '@angular/core';
-
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-posts',
@@ -12,13 +12,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponent implements OnInit {
   private _posts: any;
+  private _firebase: boolean = false;
 
   constructor(private service: PostService) {
+    this._firebase = environment.production;
   }
 
   ngOnInit() {
     this.service.getAll()
     .subscribe( resp => this._posts = resp, this.handleErrors, () => console.log('Posts loaded successfully'));
+  }
+
+  get firebase() {
+    return this._firebase;
   }
 
   get posts() {
@@ -33,7 +39,7 @@ export class PostsComponent implements OnInit {
     .subscribe(
       resp => {
         post['id'] = resp.id;
-      },
+      },  
       (error: AppError) => {
         this.handleErrors(error, () => this._posts.splice(0, 1));
       },

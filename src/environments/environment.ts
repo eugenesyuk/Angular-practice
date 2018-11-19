@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  firebase: null,
   apiUrl: 'http://localhost:4200',
   endpoints: {
       FAKELOGIN: {

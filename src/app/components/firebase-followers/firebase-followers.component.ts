@@ -7,27 +7,27 @@ import { ForbiddenError } from 'src/app/errors/forbidden-error';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
-  selector: 'app-followers',
-  templateUrl: './followers.component.html',
-  styleUrls: ['./followers.component.scss']
+  selector: 'firebase-followers',
+  templateUrl: './firebase-followers.component.html',
+  styleUrls: ['./firebase-followers.component.scss']
 })
-export class FollowersComponent implements OnInit {
+export class FirebaseFollowersComponent implements OnInit {
   private _pageStep = 10;
   private _currentPage = 1;
   private _followers: Array<any>;
   private _pageFollowers: Array<any>;
   private _pages = 1;
-  private _firebase: boolean = false;
 
-  constructor(private route: ActivatedRoute, private service: FollowersService, private router: Router) { 
-    this._firebase = environment.production;
-  }
+  constructor(private route: ActivatedRoute, private router: Router, private fb: AngularFireDatabase) { }
 
   ngOnInit() {
-    this.service.getAll().pipe(
+    console.log('Firebase followers');
+
+    this.fb.list(environment.endpoints.FOLLOWERS.GET).valueChanges().pipe(
     switchMap(
       res => {
         this._followers = res;
@@ -43,27 +43,6 @@ export class FollowersComponent implements OnInit {
       // this._currentPage = res.page;
       this._pageFollowers = this.getPageFollowers();
     });
-
-    /*
-      // The same combined in one Obsevable
-      combineLatest(
-        this.service.getAll(),
-        this.route.queryParams
-      )
-      .subscribe(
-        res => {
-          this._followers = res[0];
-          this._currentPage = res[1].page;
-          this._pages = Math.ceil(this._followers.length / 10);
-          this._pageFollowers = this.getPageFollowers();
-        },
-        this.handleErrors
-      );
-    */
-  }
-
-  get firebase() {
-    return this._firebase;
   }
 
   get followers() {

@@ -2,7 +2,7 @@ import { AppErrorHandler } from './errors/app-error-handler';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, ErrorHandler } from '@angular/core';
-import { HttpModule, BaseRequestOptions } from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +29,11 @@ import { AccessDeniedComponent } from './components/access-denied/access-denied.
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AdminGuard } from './services/admin-guard.service';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { environment } from './../environments/environment';
+import { FirebaseFollowersComponent } from './components/firebase-followers/firebase-followers.component';
+import { FirebasePostsComponent } from './components/firebase-posts/firebase-posts.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,9 @@ import { AdminGuard } from './services/admin-guard.service';
     HomeComponent,
     FollowersProfileComponent,
     LoginComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    FirebaseFollowersComponent,
+    FirebasePostsComponent
   ],
   imports: [
     HttpModule,
@@ -58,6 +65,8 @@ import { AdminGuard } from './services/admin-guard.service';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [
     AuthorService,

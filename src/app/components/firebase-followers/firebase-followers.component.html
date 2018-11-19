@@ -1,0 +1,23 @@
+<ul class="followers-list">
+  <li *ngFor="let follower of pageFollowers">
+      {{ index }}
+      <div class="avatar">
+        <img src="{{ follower.avatar_url }}"/>
+      </div>
+      <h4>
+        <a [routerLink]="['/followers', follower.id, follower.login]">{{ follower.login }}</a>
+      </h4>
+      <a href="{{ follower.html_url }}">{{ follower.html_url }}</a>
+  </li>
+</ul>
+<div class="pagination my-2">
+  <button class="btn btn-primary mx-1" 
+    [disabled]="currentPage == 1" 
+    (click)="navigatePrev()">Prev</button>
+
+  <span class="mx-2">{{ currentPage }} of {{ pages }}</span>
+
+  <button class="btn btn-primary mx-1" 
+    [disabled]="currentPage == pages"
+    (click)="navigateNext()">Next</button>
+</div>

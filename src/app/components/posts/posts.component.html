@@ -1,11 +1,15 @@
-<input type="text" class="form-control" (keyup.enter)="createPost(title)" #title>
-
-<ul class="list-group my-3">
-  <li
-    *ngFor="let post of posts"
-    class="list-group-item">
-    {{ post.title }}
-    <button class="btn btn-default btn-sm btn-update mx-1" (click)="updatePost(post)">Update</button>
-    <button class="btn btn-default btn-sm btn-update mx-1" (click)="deletePost(post)">Delete</button>
-  </li>
-</ul>
+<div *ngIf="firebase; else local">
+  <firebase-posts></firebase-posts>
+</div>
+<ng-template #local>
+  <input type="text" class="form-control" (keyup.enter)="createPost(title)" #title>
+  <ul class="list-group my-3">
+    <li
+      *ngFor="let post of posts"
+      class="list-group-item">
+      {{ post.title }}
+      <button class="btn btn-default btn-sm btn-update mx-1" (click)="updatePost(post)">Update</button>
+      <button class="btn btn-default btn-sm btn-update mx-1" (click)="deletePost(post)">Delete</button>
+    </li>
+  </ul>
+</ng-template>
