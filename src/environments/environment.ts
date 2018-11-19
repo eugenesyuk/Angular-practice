@@ -3,7 +3,24 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'http://localhost:4200',
+  endpoints: {
+      FAKELOGIN: {
+        GET: '/assets/api/empty.json',
+        USERNAME: 'eugenesyuk@gmail.com',
+        PASSWORD: 'qwerty'
+      },
+      TOKEN: {
+        GET: '/assets/api/token.json'
+      },
+      FOLLOWERS: {
+          GET: '/assets/api/followers.json'
+      },
+      POSTS: {
+          GET: '/assets/api/posts.json'
+      }
+  }
 };
 
 /*

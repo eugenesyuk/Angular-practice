@@ -24,8 +24,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { FollowersProfileComponent } from './components/followers-profile/followers-profile.component';
-import { fakeBackendProvider } from './helpers/fake-backend';
-import { MockBackend } from '@angular/http/testing';
 import { LoginComponent } from './components/login/login.component';
 import { AccessDeniedComponent } from './components/access-denied/access-denied.component';
 import { SignupFormComponent } from './components/signup-form/signup-form.component';
@@ -65,11 +63,7 @@ import { AuthGuard } from './services/auth-guard.service';
     PostService,
     FollowersService,
     AuthGuard,
-    { provide: ErrorHandler, useClass: AppErrorHandler },
-
-    fakeBackendProvider,
-    MockBackend,
-    BaseRequestOptions
+    { provide: ErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })
