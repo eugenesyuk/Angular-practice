@@ -79,19 +79,19 @@ export class FollowersComponent implements OnInit {
     return this._followers.slice( (this._currentPage - 1) * this._pageStep, (this._currentPage * this._pageStep) - 1);
   }
 
-  private navigatePrev() {
+  public navigatePrev() {
     this.router.navigate(['/followers'], {
       queryParams: { page: --this._currentPage }
     });
   }
 
-  private navigateNext() {
+  public navigateNext() {
     this.router.navigate(['/followers'], {
       queryParams: { page: ++this._currentPage }
     });
   }
 
-  private handleErrors(error: any) {
+  public handleErrors(error: any) {
     if (error instanceof BadRequestError) { alert('Bad request 400'); }
     else if(error instanceof ForbiddenError) { alert('Access forbiden 403'); }
     else if(error instanceof NotFoundError) { alert('Not found 404 error'); }

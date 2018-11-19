@@ -9,15 +9,15 @@ import { LikeClickedEventArgs } from '../like/like.component';
   styleUrls: ['./author.component.scss']
 })
 export class AuthorComponent implements OnInit {
-  @Input('isFavorite') private isSelected: boolean;
-  @Output('change') private click = new EventEmitter();
+  @Input('isFavorite') isSelected: boolean;
+  @Output('change') click = new EventEmitter();
   
-  private _authors;
-  private _authorCount: number;
-  private _email: string = '';
-  private _name: string;
-  private _title: string;
-  private isActive = true;
+  _authors;
+  _authorCount: number;
+  _email: string = '';
+  _name: string;
+  _title: string;
+  isActive = true;
 
   constructor(service: AuthorService) {
     this._authors = service.getAuthors();
@@ -64,11 +64,11 @@ export class AuthorComponent implements OnInit {
     console.log('Save was clicked' + $event);
   }
 
-  onEnterEmail(email) {
+  onEnterEmail() {
     console.log('Enter was pressed ' + this._email);
   }
 
-  onEnterName(name) {
+  onEnterName() {
     console.log('Enter was pressed ' + this._name);
   }
 

@@ -25,7 +25,7 @@ export class PostsComponent implements OnInit{
     return this._posts;
   }
 
-  private createPost(input: HTMLInputElement) {
+  public createPost(input: HTMLInputElement) {
     const post = { title: input.value };
     this._posts.splice(0, 0, post);
   

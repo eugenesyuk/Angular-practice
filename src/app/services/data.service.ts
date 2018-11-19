@@ -1,15 +1,10 @@
 import { BadRequestError } from '../errors/bad-request-error';
 import { NotFoundError } from '../errors/not-forund-error';
 import { AppError } from '../errors/app-error';
-import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { map, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs/';
 import { ForbiddenError } from '../errors/forbidden-error';
-
-@Injectable({
-  providedIn: 'root'
-})
 
 export class DataService {
   
