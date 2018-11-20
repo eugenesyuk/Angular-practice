@@ -34,6 +34,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from './../environments/environment';
 import { FirebaseFollowersComponent } from './components/firebase-followers/firebase-followers.component';
 import { FirebasePostsComponent } from './components/firebase-posts/firebase-posts.component';
+import { ReversePipe } from './pipes/reverse.pipe';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { FirebasePostsComponent } from './components/firebase-posts/firebase-pos
     LoginComponent,
     SignupFormComponent,
     FirebaseFollowersComponent,
-    FirebasePostsComponent
+    FirebasePostsComponent,
+    ReversePipe
   ],
   imports: [
     HttpModule,
