@@ -1,17 +1,19 @@
 import { BadRequestError } from '../../errors/bad-request-error';
 import { NotFoundError } from '../../errors/not-forund-error';
 import { AppError } from '../../errors/app-error';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'firebase-posts',
   templateUrl: './firebase-posts.component.html',
   styleUrls: ['./firebase-posts.component.scss']
 })
-export class FirebasePostsComponent implements OnInit {
+export class FirebasePostsComponent implements OnInit, OnDestroy {
   private _posts: any;
+  private subscription: Subscription;
 
   constructor(private fb: AngularFireDatabase) {
   }
@@ -19,6 +21,10 @@ export class FirebasePostsComponent implements OnInit {
   ngOnInit() {
     this.fb.list(environment.endpoints.POSTS.GET).valueChanges()
     .subscribe( resp => this._posts = resp, this.handleErrors, () => console.log('Posts loaded successfully'));
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   get posts() {

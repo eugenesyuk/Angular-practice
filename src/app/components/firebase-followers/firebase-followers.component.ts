@@ -1,11 +1,11 @@
 import { AppError } from './../../errors/app-error';
 import { BadRequestError } from './../../errors/bad-request-error';
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, OnInit, Optional, OnDestroy } from '@angular/core';
 import { FollowersService } from 'src/app/services/followers.service';
 import { NotFoundError } from 'src/app/errors/not-forund-error';
 import { ForbiddenError } from 'src/app/errors/forbidden-error';
 import { ActivatedRoute, Router } from '@angular/router';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { environment } from './../../../environments/environment';
@@ -15,19 +15,20 @@ import { environment } from './../../../environments/environment';
   templateUrl: './firebase-followers.component.html',
   styleUrls: ['./firebase-followers.component.scss']
 })
-export class FirebaseFollowersComponent implements OnInit {
+export class FirebaseFollowersComponent implements OnInit, OnDestroy {
   private _pageStep = 10;
   private _currentPage = 1;
   private _followers: Array<any>;
   private _pageFollowers: Array<any>;
   private _pages = 1;
+  subscription: Subscription;
 
   constructor(private route: ActivatedRoute, private router: Router, private fb: AngularFireDatabase) { }
 
   ngOnInit() {
     console.log('Firebase followers');
 
-    this.fb.list(environment.endpoints.FOLLOWERS.GET).valueChanges().pipe(
+    this.subscription = this.fb.list(environment.endpoints.FOLLOWERS.GET).valueChanges().pipe(
     switchMap(
       res => {
         this._followers = res;
@@ -43,6 +44,10 @@ export class FirebaseFollowersComponent implements OnInit {
       // this._currentPage = res.page;
       this._pageFollowers = this.getPageFollowers();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   get followers() {
