@@ -4,13 +4,18 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { trigger, state, transition, style, animate } from '@angular/animations';
-import { fadeIn_bounceOutLeft } from './../../helpers/animations';
+import { fadeInAnimation, bounceOutLeftAnimation } from 'src/app/helpers/animations';
 
 @Component({
   selector: 'firebase-posts',
   templateUrl: './firebase-posts.component.html',
   styleUrls: ['./firebase-posts.component.scss'],
-  animations: [fadeIn_bounceOutLeft]
+  animations: [
+    trigger('fadeIn-bounceOutLeft', [
+      transition(':enter', [fadeInAnimation]),
+      transition(':leave', [bounceOutLeftAnimation]),
+    ])
+  ]
 })
 export class FirebasePostsComponent {
   private postsUrl = environment.endpoints.POSTS.GET;
