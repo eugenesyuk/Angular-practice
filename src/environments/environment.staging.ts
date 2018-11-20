@@ -8,7 +8,7 @@ export const environment = {
     storageBucket: 'database-example-f91b1.appspot.com',
     messagingSenderId: '282879053589'
   },
-  apiUrl: 'https://angular-app-fb87f.firebaseapp.com/',
+  apiUrl: 'http://localhost:4200',
   endpoints: {
     FAKELOGIN: {
       GET: '/assets/api/empty.json',

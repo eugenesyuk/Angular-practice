@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'firebase-followers',
@@ -78,6 +78,12 @@ export class FirebaseFollowersComponent implements OnInit {
   }
 
   public handleErrors(error: any) {
-    if (error instanceof BadRequestError) { alert('Bad request 400'); } else if (error instanceof ForbiddenError) { alert('Access forbiden 403'); } else if (error instanceof NotFoundError) { alert('Not found 404 error'); } else { throw AppError; }
+    if (error instanceof BadRequestError) {
+      alert('Bad request 400');
+    } else if (error instanceof ForbiddenError) {
+      alert('Access forbiden 403');
+    } else if (error instanceof NotFoundError) {
+      alert('Not found 404 error');
+    } else { throw AppError; }
   }
 }

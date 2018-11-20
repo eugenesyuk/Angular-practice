@@ -23,11 +23,7 @@ export class AuthorizationService implements OnInit {
   ngOnInit() {}
 
   login(credentials) {
-    if (!environment.production) {
-      return this._makeFakeLoginRequest(credentials);
-    } else {
-      return this._postLoginRequest(credentials);
-    }
+    return this._makeFakeLoginRequest(credentials);
   }
 
   logout() {
