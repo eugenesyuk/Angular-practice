@@ -2,12 +2,15 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators'
+import { map } from 'rxjs/operators';
+import { trigger, state, transition, style, animate } from '@angular/animations';
+import { fadeIn_bounceOutLeft } from './../../helpers/animations';
 
 @Component({
   selector: 'firebase-posts',
   templateUrl: './firebase-posts.component.html',
-  styleUrls: ['./firebase-posts.component.scss']
+  styleUrls: ['./firebase-posts.component.scss'],
+  animations: [fadeIn_bounceOutLeft]
 })
 export class FirebasePostsComponent {
   private postsUrl = environment.endpoints.POSTS.GET;

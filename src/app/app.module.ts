@@ -35,6 +35,7 @@ import { environment } from './../environments/environment';
 import { FirebaseFollowersComponent } from './components/firebase-followers/firebase-followers.component';
 import { FirebasePostsComponent } from './components/firebase-posts/firebase-posts.component';
 import { ReversePipe } from './pipes/reverse.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { ReversePipe } from './pipes/reverse.pipe';
     HttpModule,
     ReactiveFormsModule,
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),

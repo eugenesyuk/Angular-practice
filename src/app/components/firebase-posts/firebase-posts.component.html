@@ -3,7 +3,7 @@
 <ul class="list-group my-3">
   <li
     *ngFor="let post of posts$ | async"
-    class="list-group-item">
+    class="list-group-item" @fadeIn-bounceOutLeft>
     {{ post.title }}
     <button class="btn btn-default btn-sm btn-update mx-1" (click)="updatePost(post)">Update</button>
     <button class="btn btn-default btn-sm btn-update mx-1" (click)="deletePost(post)">Delete</button>

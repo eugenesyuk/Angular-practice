@@ -4,11 +4,13 @@ import { AppError } from '../../errors/app-error';
 import { PostService } from './../../services/post.service';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { fadeIn_bounceOutLeft } from './../../helpers/animations';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  styleUrls: ['./posts.component.scss'],
+  animations: [fadeIn_bounceOutLeft]
 })
 export class PostsComponent implements OnInit {
   private _posts: any;
