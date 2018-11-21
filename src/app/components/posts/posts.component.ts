@@ -4,23 +4,17 @@ import { AppError } from '../../errors/app-error';
 import { PostService } from './../../services/post.service';
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { trigger, transition } from '@angular/animations';
-import { bounceOutLeftAnimation, fadeInAnimation } from 'src/app/helpers/animations';
+import { bounceOutLeft, topInStagger } from 'src/app/helpers/animations';
 
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.scss'],
-  animations: [
-    trigger('fadeIn-bounceOutLeft', [
-      transition(':enter', [fadeInAnimation]),
-      transition(':leave', [bounceOutLeftAnimation]),
-    ])
-  ]
+  animations: [topInStagger, bounceOutLeft]
 })
 export class PostsComponent implements OnInit {
   private _posts: any;
-  private _firebase: boolean = false;
+  private _firebase = false;
 
   constructor(private service: PostService) {
     this._firebase = environment.production;
@@ -47,7 +41,7 @@ export class PostsComponent implements OnInit {
     .subscribe(
       resp => {
         post['id'] = resp.id;
-      },  
+      },
       (error: AppError) => {
         this.handleErrors(error, () => this._posts.splice(0, 1));
       },
