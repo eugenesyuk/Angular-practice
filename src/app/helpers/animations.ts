@@ -36,9 +36,14 @@ export let slideOut = trigger('slide', [
 // TopInStagger
 export let topInStagger = trigger('topInStagger', [
   transition('void => *', [
+    query(':enter', style({ opacity: 0})),
     query(':enter', [
-      style({ opacity: 0, transform: 'translateY(-15px)' }),
-      stagger(25, animate('.25s ease-out', style({ opacity: 1, transform: 'translateY(0px)' })))
+      stagger(100, animate('.1s ease-out', keyframes([
+          style({ opacity: 1, transform: 'translateY(-75px)', offset: 0 }),
+          style({ opacity: .5, transform: 'translateY(35px)', offset: 0.3 }),
+          style({ opacity: 1, transform: 'translateY(0)', offset: 1 }),
+        ])
+      ))
     ])
   ])
 ]);

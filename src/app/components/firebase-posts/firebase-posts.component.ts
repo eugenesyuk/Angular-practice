@@ -15,7 +15,7 @@ export class FirebasePostsComponent {
   private postsUrl = environment.endpoints.POSTS.GET;
   postsRef$: AngularFireList<any>;
   posts$: Observable<any>;
-  trackPostsObjects = (idx, obj) => obj.$key;
+  
 
   constructor(private fb: AngularFireDatabase) {
     this.postsRef$ = this.fb.list(this.postsUrl);
@@ -27,6 +27,10 @@ export class FirebasePostsComponent {
         }));
       })
     );
+  }
+
+  public trackPostsObjects(index, item) {
+    return index;
   }
 
   public createPost(input: HTMLInputElement) {
