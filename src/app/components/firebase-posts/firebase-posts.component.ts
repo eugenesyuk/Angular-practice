@@ -1,26 +1,21 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { trigger, state, transition, style, animate } from '@angular/animations';
-import { fadeInAnimation, bounceOutLeftAnimation } from 'src/app/helpers/animations';
+import { topInStagger, bounceOutLeft } from 'src/app/helpers/animations';
 
 @Component({
   selector: 'firebase-posts',
   templateUrl: './firebase-posts.component.html',
   styleUrls: ['./firebase-posts.component.scss'],
-  animations: [
-    trigger('fadeIn-bounceOutLeft', [
-      transition(':enter', [fadeInAnimation]),
-      transition(':leave', [bounceOutLeftAnimation]),
-    ])
-  ]
+  animations: [ topInStagger, bounceOutLeft ]
 })
 export class FirebasePostsComponent {
   private postsUrl = environment.endpoints.POSTS.GET;
   postsRef$: AngularFireList<any>;
   posts$: Observable<any>;
+  trackPostsObjects = (idx, obj) => obj.$key;
 
   constructor(private fb: AngularFireDatabase) {
     this.postsRef$ = this.fb.list(this.postsUrl);
